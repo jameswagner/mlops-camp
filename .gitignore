@@ -1,0 +1,72 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Python virtual environments
+venv/
+env/
+ENV/
+.env/
+.venv/
+
+# Data files - keep folder structure but ignore contents
+data/*
+!data/.gitkeep
+*.parquet
+*.csv
+*.h5
+*.pkl
+
+# Models - keep folder structure but ignore contents
+models/*
+!models/.gitkeep
+*.bin
+*.pkl
+*.joblib
+*.h5
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Experiment tracking
+mlruns/
+.prefect/
+wandb/
+tensorboard/ 
