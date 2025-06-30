@@ -1,0 +1,15 @@
+services:
+  localstack:
+    image: localstack/localstack:latest
+    container_name: localstack-s3
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3
+      - DEBUG=1
+      - PERSISTENCE=0          # Don't persist data
+      - TMPDIR=/tmp/localstack-temp  # Use different temp dir
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    tmpfs:
+      - /tmp/localstack-temp   # Use tmpfs for temp directory

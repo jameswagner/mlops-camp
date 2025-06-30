@@ -12,9 +12,8 @@ from prefect.cache_policies import NONE
 # Load environment variables
 load_dotenv()
 
-# New Evidently API imports
 from evidently import DataDefinition, Dataset, Report
-from evidently.metrics import ValueDrift, DriftedColumnsCount, MissingValueCount, QuantileValue
+from evidently.metrics import ValueDrift, DriftedColumnsCount, MissingValueCount, QuantileValue, MaxValue
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s]: %(message)s")
 
@@ -111,7 +110,8 @@ def calculate_metrics_postgresql(day_offset):
         ValueDrift(column='prediction'),
         DriftedColumnsCount(),
         MissingValueCount(column='prediction'),
-        QuantileValue(column='fare_amount', quantile=0.5)  # Q2: FIXED - use 'column' not 'column_name'
+        QuantileValue(column='fare_amount', quantile=0.5),
+        MaxValue(column='fare_amount') 
     ])
     
     # Run report with new API
@@ -152,8 +152,7 @@ def batch_monitoring_backfill():
     print()
     
     # Q2: Print added metric
-    print("Q2 ANSWER: Added metric = QuantileValue(column='fare_amount', quantile=0.5)")
-    print("   This tracks the 50th percentile (median) of the fare_amount column")
+    print("Q2 ANSWER: Added metric = MaxValue(column='fare_amount') - maximum fare amount")
     print()
     
     prep_db()
@@ -197,7 +196,7 @@ def batch_monitoring_backfill():
     print("FINAL HOMEWORK ANSWERS:")
     print("=" * 60)
     print(f"Q1: {march_data.shape[0]} rows")
-    print(f"Q2: QuantileValue")
+    print(f"Q2: MaxValue(column='fare_amount') - maximum fare amount")
     print(f"Q3: {max_quantile}")
     print(f"Q4: project_folder/dashboards")
     print("=" * 60)

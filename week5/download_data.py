@@ -5,7 +5,7 @@ import os
 files = [
     'green_tripdata_2022-01.parquet',
     'green_tripdata_2022-02.parquet', 
-    'green_tripdata_2024-03.parquet'  # For homework Q1
+    'green_tripdata_2024-03.parquet'
 ]
 
 os.makedirs('data', exist_ok=True)
